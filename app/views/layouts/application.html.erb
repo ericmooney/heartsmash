@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<meta charset="utf-8" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  	<title><%= content_for?(:title) ? yield(:title) : "Heartsmash" %></title>
+
+  	<%= stylesheet_link_tag    "application" %>
+  	<%= javascript_include_tag "vendor/custom.modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+    <body>
+      <nav class="top-bar">
+        <%= render 'layouts/nav' %>
+      </nav>
+
+      <div id="signup_window" class="reveal-modal medium"></div>
+      <div id="login_window" class="reveal-modal medium"></div>
+
+      <% if !notice.blank? || !alert.blank? %>
+        <div class="row">
+          <div class="large-12 large-centered columns">
+            <% if !notice.blank? %>
+              <div class="alert-box success" id="notice"><%= notice %></div>
+            <% end %>
+
+            <% if !alert.blank? %>
+              <div class="alert-box alert" id="alert"><%= alert %></div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <%= yield %>
+    </div>
+  </div>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+      <%= javascript_include_tag "application" %>
+    </body>
+</html>
