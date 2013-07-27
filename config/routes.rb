@@ -1,6 +1,12 @@
 Heartsmash::Application.routes.draw do
+  match 'login' => 'user_sessions#new', :as => :login
+  match 'logout' => 'user_sessions#destroy', :as => :logout
 
-root :to => 'users#index'
+  resources :user_sessions, :except => [:index, :show, :edit, :update]
+  resources :users
+
+
+  root :to => 'users#index'
 
 
 end

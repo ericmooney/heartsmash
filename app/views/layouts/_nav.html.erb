@@ -4,18 +4,18 @@
   </li>
 </ul>
 
-<!-- <section class="top-bar-section">
+<section class="top-bar-section">
   <ul class="right">
     <li class="divider"></li>
-    <%# if current_user %>
-      <li><%#= link_to "Logged in: #{current_user.email}", edit_user_path(current_user.id) %></li>
+    <% if current_user %>
+      <li><%= link_to "Logged in: #{current_user.email}", edit_user_path(current_user.id) %></li>
       <li><%#= link_to "Your Messages", user_messages_path(current_user.id) %></li>
       <li class="divider"></li>
-      <li><%#= link_to "Logout", :logout %></li>
-    <%# else %>
-      <li><%#= link_to "Register", new_user_path, :remote => true, :data => {"reveal-id" => "signup_window"} %></li>
+      <li><%= link_to "Logout", :logout %></li>
+    <% else %>
+      <li><%= link_to "Register", new_user_path, :remote => true, :data => {"reveal-id" => "signup_window"} %></li>
       <li class="divider"></li>
-      <li><%#= link_to "Login", :login, :remote => true, :data => {"reveal-id" => "login_window"} %></li>
-    <%# end %>
+      <li><%= link_to "Login", :login, :remote => true, :data => {"reveal-id" => "login_window"} %></li>
+    <% end %>
   </ul>
-</div> -->
+</div>

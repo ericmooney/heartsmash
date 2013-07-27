@@ -1,0 +1,5 @@
+var nav = $('nav.top-bar');
+
+$('#login_window').foundation('reveal', 'close');
+
+nav.empty().append("<%= j render 'layouts/nav' %>");

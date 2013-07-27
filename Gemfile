@@ -15,7 +15,7 @@ group :development do
   gem 'binding_of_caller'
 end
 
-
+gem 'sorcery'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
