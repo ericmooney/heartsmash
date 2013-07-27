@@ -1,6 +1,17 @@
-<h1>Editing user</h1>
+<% if @user.subscription != nil %>
+  <h1>You are a Premium User with Private Messaging</h1>
+<% else %>
+  <h1>Upgrage for unlimited Private Messaging!</h1>
+    <p><%= link_to 'Subscribe Here', new_subscription_path, :class => "button" %></p>
+<% end %>
+
+
+<h2>Or edit your account</h2>
 
 <%= render 'form' %>
 
+
+<br>
+<br>
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>

@@ -18,7 +18,7 @@ class UserSessionsController < ApplicationController
         format.js
       else
         format.html { flash.now[:alert] = "Login failed."; render :action => "new" }
-        format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
+        format.js
       end
     end
   end

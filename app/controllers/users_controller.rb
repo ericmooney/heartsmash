@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   skip_before_filter :require_login, :only => [:index, :new, :create]
 
   def index
-    @users = User.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -12,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -30,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
   end
 
   def create
@@ -48,7 +47,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -62,7 +61,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
     @user.destroy
 
     respond_to do |format|

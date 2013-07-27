@@ -47,3 +47,5 @@ gem 'dotenv-rails'
 # gem 'debugger'
 gem 'compass-rails' # you need this or you get an err
 gem 'zurb-foundation', '~> 4.0.0'
+
+gem 'stripe'

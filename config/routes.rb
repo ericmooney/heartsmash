@@ -4,7 +4,7 @@ Heartsmash::Application.routes.draw do
 
   resources :user_sessions, :except => [:index, :show, :edit, :update]
   resources :users
-
+  resources :subscriptions
 
   root :to => 'users#index'
 
