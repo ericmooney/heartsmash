@@ -1,7 +1,8 @@
-<h1>Your Conversation with <%=  %></h1>
+<h1>Your Conversation with <%= @conversation_partner.email %></h1>
 
 <div class="row">
   <div class="large-12 large-centered columns">
+    <p>Current Time <%= Time.now.strftime('%B %e, %Y at %l:%M %p') %></p>
      <table>
        <tr>
          <th><%= current_user.email %></th>
@@ -14,9 +15,8 @@
        <tr>
         <td><%= current_user.id == message.sender_id ? message.content : "" %></td>
         <td><%= current_user.id == message.receiver_id ? message.content : "" %></td>
-        <td><%= message.created_at %></td>
-
-         <td><%#= link_to 'Show', message_path(@message) %></td>
+        <!-- for Pacific time.... -->
+        <td><%= message.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p') %></td>
        </tr>
      <% end %>
      </table>

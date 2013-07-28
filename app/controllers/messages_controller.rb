@@ -34,7 +34,7 @@ class MessagesController < ApplicationController
   end
 
   def new
-    @receiver = User.find(params[:user_id])
+    @conversation_partner = User.find(params[:user_id])
     @message = Message.new
   end
 
@@ -44,6 +44,7 @@ class MessagesController < ApplicationController
   end
 
   def show
+    #Goal: Display all messages between current logged in user and chosen conversation partner
     @conversation_partner = User.find(params[:user_id])
 
     messages = []
@@ -59,8 +60,9 @@ class MessagesController < ApplicationController
       messages << message_to_current_user
     end
 
+    # Sort relevant conversations by date
     @messages = messages.sort {
-      |a, b| a.created_at <=> b.created_at
+      |a, b| b.created_at <=> a.created_at
     }
   end
 end
