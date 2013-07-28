@@ -9,7 +9,7 @@
     <li class="divider"></li>
     <% if current_user %>
       <li><%= link_to "Logged in: #{current_user.email}", edit_user_path(current_user.id) %></li>
-      <li><%#= link_to "Your Messages", user_messages_path(current_user.id) %></li>
+      <li><%= link_to "Conversations", messages_path %></li>
       <li class="divider"></li>
       <li><%= link_to "Logout", :logout %></li>
     <% else %>

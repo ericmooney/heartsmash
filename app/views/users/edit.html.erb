@@ -1,15 +1,20 @@
 <% if @user.subscription != nil %>
-  <h1>You are a Premium User with Private Messaging</h1>
+  <h1>You are a Premium User!</h1>
 <% else %>
   <h1>Upgrage for unlimited Private Messaging!</h1>
     <p><%= link_to 'Subscribe Here', new_subscription_path, :class => "button" %></p>
 <% end %>
 
 
-<h2>Or edit your account</h2>
+<h2>You may edit your account below</h2>
 
-<%= render 'form' %>
+<div class="row">
+  <div class="large-3 columns">
 
+    <%= render 'form' %>
+
+  </div>
+</div>
 
 <br>
 <br>
