@@ -9,6 +9,8 @@
       </div>
     </div>
 
+    <%= hidden_field_tag "refresh_url", message_path(@conversation_partner.id) %>
+
     <div class="row">
       <div id="messages_container" class="large-12 large-centered columns">
         <%= render 'messages' %>

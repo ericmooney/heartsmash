@@ -31,11 +31,20 @@ class MessagesController < ApplicationController
     # create instance variable to use in views
     @conversation_partners = conversation_partners
 
+    respond_to do |format|
+      format.html # index.html.erb
+      format.js
+    end
   end
 
   def new
     @conversation_partner = User.find(params[:user_id])
     @message = Message.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.js
+    end
   end
 
   def create
@@ -98,5 +107,11 @@ class MessagesController < ApplicationController
     @messages = messages.sort {
       |a, b| b.created_at <=> a.created_at
     }
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.js
+    end
   end
+
 end
