@@ -3,6 +3,14 @@ class UsersController < ApplicationController
   skip_before_filter :require_login, :only => [:index, :new, :create]
 
   def index
+    search_query = params[:query]
+
+    if search_query.blank?
+      @users = User.find(:all, :conditions => ["id != ?", current_user.id])
+    else
+      @users = User.where("email @@ :q", :q => "%#{search_query}%")
+
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -11,7 +19,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:user_id])
+    @user = User.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

@@ -31,6 +31,18 @@ class MessagesController < ApplicationController
     # create instance variable to use in views
     @conversation_partners = conversation_partners
 
+    #see a list of users you haven't talked to yet
+    uncontacted_users = []
+    User.all.each do |user|
+      if !@conversation_partners.include?(user) && current_user != user
+        uncontacted_users << user
+      end
+    end
+
+    @message = Message.new
+    @uncontacted_users = uncontacted_users
+
+
     respond_to do |format|
       format.html # index.html.erb
       format.js
@@ -84,6 +96,7 @@ class MessagesController < ApplicationController
   end
 
   def show
+
     # For displaying new message form
     @message = Message.new
 
@@ -112,6 +125,8 @@ class MessagesController < ApplicationController
       format.html # show.html.erb
       format.js
     end
+
+
   end
 
 end
