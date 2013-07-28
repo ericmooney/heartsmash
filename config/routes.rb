@@ -12,6 +12,7 @@ Heartsmash::Application.routes.draw do
   resources :user_sessions, :except => [:index, :show, :edit, :update]
   resources :users
   resources :subscriptions
+  resources :photos, :except => [:index, :new, :edit, :update]
 
   root :to => 'users#index'
 

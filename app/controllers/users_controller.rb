@@ -19,7 +19,10 @@ class UsersController < ApplicationController
   end
 
   def show
+    @photo = Photo.new
+
     @user = User.find(params[:id])
+    @photos = @user.photos
 
     respond_to do |format|
       format.html # show.html.erb

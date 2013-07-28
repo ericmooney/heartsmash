@@ -37,6 +37,10 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.0.4)
     callsite (0.0.11)
+    carrierwave (0.9.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
     chunky_png (1.2.8)
     coderay (1.0.9)
     columnize (0.3.6)
@@ -132,6 +136,7 @@ GEM
       json (~> 1.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    rmagick (2.13.2)
     sass (3.2.9)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -172,6 +177,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
+  carrierwave
   compass-rails
   dotenv-rails
   jquery-rails
@@ -180,6 +186,7 @@ DEPENDENCIES
   pry-debugger
   pry-rails
   rails (= 3.2.13)
+  rmagick
   sass-rails (~> 3.2.3)
   sorcery
   stripe
