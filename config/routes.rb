@@ -1,4 +1,5 @@
 Heartsmash::Application.routes.draw do
+  get 'messages/:user_id' => 'messages#show'
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout
 

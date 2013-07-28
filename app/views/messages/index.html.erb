@@ -4,19 +4,16 @@
   <div class="large-12 large-centered columns">
      <table>
        <tr>
-         <th>Message Sent by:</th>
-         <th>Message Received by:</th>
-         <th>Message Content</th>
+         <th>With</th>
+         <th></th>
+         <th></th>
          <th></th>
        </tr>
 
-     <% @messages.each do |message| %>
+     <% @conversation_partners.each do |user| %>
        <tr>
-        <td><%= message.sender.email %></td>
-        <td><%= message.receiver.email %></td>
-        <td><%= message.content %></td>
-
-         <td><%#= link_to 'Show', message_path(@message) %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to 'Show', message_path(user.id) %></td>
        </tr>
      <% end %>
      </table>
