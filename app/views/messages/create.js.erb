@@ -1,0 +1,5 @@
+var messages_container = $('#messages_container');
+
+$('#message_content').val("");
+
+messages_container.empty().append("<%= j render 'messages' %>");

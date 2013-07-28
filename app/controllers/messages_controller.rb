@@ -40,10 +40,44 @@ class MessagesController < ApplicationController
 
   def create
     @message = current_user.sent_messages.create(params[:message])
-    redirect_to(message_path, :message => 'Message has been sent.')
+
+    respond_to do |format|
+      if @message.save
+
+        @conversation_partner = User.find(params[:message][:receiver_id])
+
+        messages = []
+
+        sent_messages = current_user.sent_messages.where(:receiver_id => @conversation_partner.id)
+        received_messages = current_user.received_messages.where(:sender_id => @conversation_partner.id)
+
+        sent_messages.each do |message_by_current_user|
+          messages << message_by_current_user
+        end
+
+        received_messages.each do |message_to_current_user|
+          messages << message_to_current_user
+        end
+
+        # Sort relevant conversations by date
+        @messages = messages.sort {
+          |a, b| b.created_at <=> a.created_at
+        }
+
+
+        format.html { redirect_to message_path(message.receiver_id), notice: 'Message has been sent.' }
+        format.js
+      else
+        format.html { render action: "new" }
+        format.js
+      end
+    end
   end
 
   def show
+    # For displaying new message form
+    @message = Message.new
+
     #Goal: Display all messages between current logged in user and chosen conversation partner
     @conversation_partner = User.find(params[:user_id])
 
