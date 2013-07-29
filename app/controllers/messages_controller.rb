@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+
   def index
     #Goal: find all users that current logged in user has had contact with
     conversation_partner_ids = []

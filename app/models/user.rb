@@ -11,4 +11,6 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password, :message => "should match confirmation", :if => :password
   validates_uniqueness_of :email
 
+
+
 end

@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
 
   skip_before_filter :require_login, :only => [:index, :new, :create]
+  skip_before_filter :require_subscription
 
   def index
+
     search_query = params[:query]
 
-    if search_query.blank?
+    if search_query.blank? && current_user
       @users = User.find(:all, :conditions => ["id != ?", current_user.id])
     else
       @users = User.where("email @@ :q", :q => "%#{search_query}%")

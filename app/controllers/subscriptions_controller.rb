@@ -1,4 +1,7 @@
 class SubscriptionsController < ApplicationController
+
+  skip_before_filter :require_subscription
+
   def new
     @user = User.find(session[:user_id])
     @subscription = Subscription.new

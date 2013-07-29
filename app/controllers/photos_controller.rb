@@ -1,4 +1,7 @@
 class PhotosController < ApplicationController
+
+  skip_before_filter :require_subscription
+
   def new
   end
 
